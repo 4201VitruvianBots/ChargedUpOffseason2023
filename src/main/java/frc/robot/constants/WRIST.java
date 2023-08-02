@@ -3,9 +3,9 @@ package frc.robot.constants;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
-import testUtils.CtreUtils.Devices.Falcon500;
+import frc.robot.utils.CtreUtils.Devices.Falcon500;
 
-public class Wrist {
+public class WRIST {
   public static final double gearRatio = 1024.0 / 27.0;
   public static final double encoderUnitsToDegrees =
       360.0 / (Falcon500.kSensorUnitsPerRotation * gearRatio);

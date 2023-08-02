@@ -14,7 +14,7 @@ import java.net.NetworkInterface;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
-public final class Base {
+public final class BASE {
   public static String robotName = "";
 
   public static final String alphaRobotMAC = "00:80:2F:25:BC:FD";
@@ -22,36 +22,36 @@ public final class Base {
 
   private static void initBeta() {
     robotName = "Beta";
-    Swerve.frontLeftCANCoderOffset = 125.068; // 85.957;
-    Swerve.frontRightCANCoderOffset = 62.051; // 41.748;
-    Swerve.backLeftCANCoderOffset = 190.635; // 261.475;
-    Swerve.backRightCANCoderOffset = 31.113;
+    SWERVE.frontLeftCANCoderOffset = 125.068; // 85.957;
+    SWERVE.frontRightCANCoderOffset = 62.051; // 41.748;
+    SWERVE.backLeftCANCoderOffset = 190.635; // 261.475;
+    SWERVE.backRightCANCoderOffset = 31.113;
   }
 
   private static void initAlpha() {
     robotName = "Alpha";
 
-    Swerve.frontLeftCANCoderOffset = 126.914; // 85.957;
-    Swerve.frontRightCANCoderOffset = 222.9785; // 41.748;
-    Swerve.backLeftCANCoderOffset = 191.25; // 261.475;
-    Swerve.backRightCANCoderOffset = 34.7605;
+    SWERVE.frontLeftCANCoderOffset = 126.914; // 85.957;
+    SWERVE.frontRightCANCoderOffset = 222.9785; // 41.748;
+    SWERVE.backLeftCANCoderOffset = 191.25; // 261.475;
+    SWERVE.backRightCANCoderOffset = 34.7605;
 
     // TODO: Upgrade to Phoenix6
-    //    Elevator.mainMotorInversionType = TalonFXInvertType.CounterClockwise;
+    //    ELEVATOR.mainMotorInversionType = TalonFXInvertType.CounterClockwise;
     //    Wrist.motorInversionType = TalonFXInvertType.Clockwise;
   }
 
   private static void initSim() {
     robotName = "Sim";
 
-    Swerve.frontLeftCANCoderOffset = 0;
-    Swerve.frontRightCANCoderOffset = 0;
-    Swerve.backLeftCANCoderOffset = 0;
-    Swerve.backRightCANCoderOffset = 0;
+    SWERVE.frontLeftCANCoderOffset = 0;
+    SWERVE.frontRightCANCoderOffset = 0;
+    SWERVE.backLeftCANCoderOffset = 0;
+    SWERVE.backRightCANCoderOffset = 0;
 
-    Swerve.kP_Theta = 0.1;
-    Swerve.kI_Theta = 0;
-    Swerve.kD_Theta = 0;
+    SWERVE.kP_Theta = 0.1;
+    SWERVE.kI_Theta = 0;
+    SWERVE.kD_Theta = 0;
   }
 
   private static void initUnknown() {
@@ -85,7 +85,7 @@ public final class Base {
     }
 
     if (!DriverStation.isFMSAttached()) {
-      StateHandler.limitCanUtilization = false;
+      STATE_HANDLER.limitCanUtilization = false;
     }
 
     SmartDashboard.putString("Robot Name", robotName);

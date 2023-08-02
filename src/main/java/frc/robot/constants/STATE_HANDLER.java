@@ -2,7 +2,7 @@ package frc.robot.constants;
 
 import edu.wpi.first.math.util.Units;
 
-public class StateHandler {
+public class STATE_HANDLER {
 
   public enum ZONE {
     UNDEFINED, // Danger
@@ -20,8 +20,8 @@ public class StateHandler {
 
   public static boolean limitCanUtilization = false;
 
-  public static final double mechanism2dXSize = Elevator.THRESHOLD.ABSOLUTE_MAX.get() * 2;
-  public static final double mechanism2dYSize = Elevator.THRESHOLD.ABSOLUTE_MAX.get() * 2;
+  public static final double mechanism2dXSize = ELEVATOR.THRESHOLD.ABSOLUTE_MAX.get() * 2;
+  public static final double mechanism2dYSize = ELEVATOR.THRESHOLD.ABSOLUTE_MAX.get() * 2;
   public static final double mechanism2dXOffset = Units.inchesToMeters(3);
   public static final double mechanism2dYOffset = Units.inchesToMeters(11);
 
@@ -68,28 +68,28 @@ public class StateHandler {
 
   public enum SETPOINT {
     // Units are in meters, radians
-    STOWED(Elevator.SETPOINT.STOWED.get(), Wrist.SETPOINT.STOWED.get()),
-    SCORE_LOW(Elevator.SETPOINT.SCORE_LOW_CONE.get(), Wrist.SETPOINT.SCORE_LOW_CONE.get()),
+    STOWED(ELEVATOR.SETPOINT.STOWED.get(), WRIST.SETPOINT.STOWED.get()),
+    SCORE_LOW(ELEVATOR.SETPOINT.SCORE_LOW_CONE.get(), WRIST.SETPOINT.SCORE_LOW_CONE.get()),
     SCORE_LOW_REVERSE(
-        Elevator.SETPOINT.SCORE_LOW_REVERSE.get(), Wrist.SETPOINT.SCORE_LOW_REVERSE.get()),
-    SCORE_MID_CONE(Elevator.SETPOINT.SCORE_MID_CONE.get(), Wrist.SETPOINT.SCORE_MID_CONE.get()),
+        ELEVATOR.SETPOINT.SCORE_LOW_REVERSE.get(), WRIST.SETPOINT.SCORE_LOW_REVERSE.get()),
+    SCORE_MID_CONE(ELEVATOR.SETPOINT.SCORE_MID_CONE.get(), WRIST.SETPOINT.SCORE_MID_CONE.get()),
 
-    SCORE_MID_CUBE(Elevator.SETPOINT.SCORE_MID_CUBE.get(), Wrist.SETPOINT.SCORE_MID_CUBE.get()),
+    SCORE_MID_CUBE(ELEVATOR.SETPOINT.SCORE_MID_CUBE.get(), WRIST.SETPOINT.SCORE_MID_CUBE.get()),
 
-    SCORE_HIGH_CONE(Elevator.SETPOINT.SCORE_HIGH_CONE.get(), Wrist.SETPOINT.SCORE_HIGH_CONE.get()),
+    SCORE_HIGH_CONE(ELEVATOR.SETPOINT.SCORE_HIGH_CONE.get(), WRIST.SETPOINT.SCORE_HIGH_CONE.get()),
 
-    SCORE_HIGH_CUBE(Elevator.SETPOINT.SCORE_HIGH_CUBE.get(), Wrist.SETPOINT.SCORE_HIGH_CUBE.get()),
+    SCORE_HIGH_CUBE(ELEVATOR.SETPOINT.SCORE_HIGH_CUBE.get(), WRIST.SETPOINT.SCORE_HIGH_CUBE.get()),
 
     INTAKING_EXTENDED_CONE(
-        Elevator.SETPOINT.INTAKING_EXTENDED_CONE.get(),
-        Wrist.SETPOINT.INTAKING_EXTENDED_CONE.get()),
+        ELEVATOR.SETPOINT.INTAKING_EXTENDED_CONE.get(),
+        WRIST.SETPOINT.INTAKING_EXTENDED_CONE.get()),
 
     INTAKING_EXTENDED_CUBE(
-        Elevator.SETPOINT.INTAKING_EXTENDED_CUBE.get(),
-        Wrist.SETPOINT.INTAKING_EXTENDED_CUBE.get()),
+        ELEVATOR.SETPOINT.INTAKING_EXTENDED_CUBE.get(),
+        WRIST.SETPOINT.INTAKING_EXTENDED_CUBE.get()),
 
-    INTAKING_LOW_CONE(Elevator.SETPOINT.INTAKING_LOW.get(), Wrist.SETPOINT.INTAKING_LOW_CONE.get()),
-    INTAKING_LOW_CUBE(Elevator.SETPOINT.INTAKING_LOW.get(), Wrist.SETPOINT.INTAKING_LOW_CUBE.get());
+    INTAKING_LOW_CONE(ELEVATOR.SETPOINT.INTAKING_LOW.get(), WRIST.SETPOINT.INTAKING_LOW_CONE.get()),
+    INTAKING_LOW_CUBE(ELEVATOR.SETPOINT.INTAKING_LOW.get(), WRIST.SETPOINT.INTAKING_LOW_CUBE.get());
 
     private final double elevatorSetpointMeters;
     private final double wristSetpointRadians;

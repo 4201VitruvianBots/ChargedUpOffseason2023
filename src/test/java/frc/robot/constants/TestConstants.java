@@ -26,11 +26,11 @@ public class TestConstants {
   // Mark all test functions with @Test
   @Test
   public void TestInitConfig() {
-    Base.initConstants();
+    BASE.initConstants();
     String testName = "Sim";
     double testKp = 0.1;
     // For booleans, you can use assertTrue/assertFalse
-    assertEquals(testName, Base.robotName);
-    assertEquals(testKp, Swerve.kP_Theta);
+    assertEquals(testName, BASE.robotName);
+    assertEquals(testKp, SWERVE.kP_Theta);
   }
 }

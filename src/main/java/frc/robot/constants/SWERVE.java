@@ -3,10 +3,10 @@ package frc.robot.constants;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
+import frc.robot.utils.SwerveUtils.*;
 import java.util.Map;
-import testUtils.SwerveUtils.*;
 
-public class Swerve {
+public class SWERVE {
   public static final double kTrackWidth = Units.inchesToMeters(24);
   public static final double kWheelBase = Units.inchesToMeters(24);
 
