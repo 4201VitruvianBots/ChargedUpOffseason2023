@@ -59,6 +59,9 @@ public final class Base {
   }
 
   public static void initConstants() {
+    // TODO: Change to use RoboRIO Serial instead of MAC Addresses
+    // (https://www.chiefdelphi.com/t/1678-citrus-circuits-2023-cad-and-code-release/437632/15)
+    //  Also, consider moving this to Codex
     String mac = "";
     try {
       var ip = InetAddress.getLocalHost();
