@@ -3,7 +3,7 @@ package frc.robot.constants;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
-import frc.robot.utils.CtreUtils.Devices.Falcon500;
+import testUtils.CtreUtils.Devices.Falcon500;
 
 public class Wrist {
   public static final double gearRatio = 1024.0 / 27.0;

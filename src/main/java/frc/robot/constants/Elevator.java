@@ -4,7 +4,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
-import frc.robot.utils.CtreUtils.Devices.Falcon500;
+import testUtils.CtreUtils.Devices.Falcon500;
 
 public class Elevator {
   // Elevator sim constants

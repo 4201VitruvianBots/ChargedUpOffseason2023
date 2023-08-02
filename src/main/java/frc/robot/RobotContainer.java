@@ -18,7 +18,7 @@ import frc.robot.subsystems.ExampleSubsystem;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and trigger mappings) should be declared here.
  */
-public class RobotContainer {
+public class RobotContainer implements AutoCloseable {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
@@ -60,4 +60,7 @@ public class RobotContainer {
     // An example command will be run in autonomous
     return Autos.exampleAuto(m_exampleSubsystem);
   }
+
+  @Override
+  public void close() throws Exception {}
 }
