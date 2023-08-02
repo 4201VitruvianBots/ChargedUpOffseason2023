@@ -4,11 +4,8 @@
 
 package frc.robot.subsystems.elevator;
 
-import static frc.robot.Constants.ELEVATOR.centerOffset;
+import static frc.robot.constants.ELEVATOR.centerOffset;
 
-import org.littletonrobotics.junction.Logger;
-
-import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
@@ -24,10 +21,10 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.smartdashboard.MechanismLigament2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.CONTROL_MODE;
-import frc.robot.Constants.ELEVATOR;
-import frc.robot.Constants.ELEVATOR.THRESHOLD;
-import frc.robot.Constants.STATE_HANDLER;
+import frc.robot.constants.BASE.CONTROL_MODE;
+import frc.robot.constants.ELEVATOR;
+import frc.robot.constants.STATE_HANDLER;
+import org.littletonrobotics.junction.Logger;
 
 public class Elevator extends SubsystemBase implements AutoCloseable {
   // private boolean m_elevatorInitialized;
@@ -47,8 +44,8 @@ public class Elevator extends SubsystemBase implements AutoCloseable {
   private final boolean m_limitCanUtil = STATE_HANDLER.limitCanUtilization;
 
   // Positional limits set by the state handler
-  private double m_lowerLimitMeters = THRESHOLD.ABSOLUTE_MIN.get();
-  private double m_upperLimitMeters = THRESHOLD.ABSOLUTE_MAX.get();
+  private double m_lowerLimitMeters = ELEVATOR.THRESHOLD.ABSOLUTE_MIN.get();
+  private double m_upperLimitMeters = ELEVATOR.THRESHOLD.ABSOLUTE_MAX.get();
 
   // Controlled by open loop
   private double m_joystickInput;
@@ -148,9 +145,9 @@ public class Elevator extends SubsystemBase implements AutoCloseable {
     m_io.setPIDvalues(f, p, i, d, iZone);
   }
 
-  public void setNeutralMode(NeutralMode mode) {
-    m_io.setNeutralMode(mode);
-  }
+  //  public void setNeutralMode(NeutralMode mode) {
+  //    m_io.setNeutralMode(mode);
+  //  }
 
   public void setSensorPosition(double meters) {
     m_io.setSensorPosition(meters);
@@ -167,19 +164,6 @@ public class Elevator extends SubsystemBase implements AutoCloseable {
   public boolean getLimitSwitch() {
     //    return !lowerLimitSwitch.get();
     return false;
-  }
-
-  // This is so incredibly scuffed but it'll have to do
-  public NeutralMode getNeutralMode() {
-    switch (m_inputs.neutralMode) {
-      case "Brake":
-        return NeutralMode.Brake;
-      case "Coast":
-        return NeutralMode.Coast;
-      default:
-      case "EEPROM":
-        return NeutralMode.EEPROMSetting;
-    }
   }
 
   public void setDesiredPositionMeters(double meters) {

@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
-import frc.robot.subsystems.SwerveDrive;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -16,7 +15,6 @@ import org.junit.jupiter.api.Test;
 @Disabled
 public class SchedulerTest extends CommandTestBase {
   protected RobotContainer m_robotContainer;
-  protected SwerveDrive m_swerveDrive;
 
   @BeforeEach
   // this method will run before each test. We Initialize the RobotContainer and get all subsystems
@@ -24,7 +22,6 @@ public class SchedulerTest extends CommandTestBase {
   void setup() {
     assert HAL.initialize(500, 0); // initialize the HAL, crash if failed
     m_robotContainer = new RobotContainer();
-    m_swerveDrive = m_robotContainer.getSwerveDrive();
   }
 
   @SuppressWarnings("PMD.SignatureDeclareThrowsException")
@@ -40,10 +37,11 @@ public class SchedulerTest extends CommandTestBase {
   @Test
   public void TestCommandScheduling() {
     var testCommand = new PrintCommand("Hello World").andThen(new PrintCommand("Hello World 2"));
-    testCommand.addRequirements(m_swerveDrive);
+    var mockSubsystem = new MockSubsystem();
+    testCommand.addRequirements(mockSubsystem);
     CommandScheduler.getInstance().schedule(testCommand);
     //    CommandScheduler.getInstance().run();
 
-    assertEquals(m_swerveDrive.getCurrentCommand(), testCommand);
+    assertEquals(mockSubsystem.getCurrentCommand(), testCommand);
   }
 }

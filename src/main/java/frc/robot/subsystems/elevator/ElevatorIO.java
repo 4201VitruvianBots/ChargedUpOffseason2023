@@ -4,7 +4,6 @@
 
 package frc.robot.subsystems.elevator;
 
-import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.smartdashboard.MechanismLigament2d;
 import org.littletonrobotics.junction.AutoLog;
@@ -46,7 +45,7 @@ public interface ElevatorIO {
 
   public default void setSensorPosition(double meters) {}
 
-  public default void setNeutralMode(NeutralMode mode) {}
+  //  public default void setNeutralMode(NeutralMode mode) {}
 
   public default void setPIDvalues(double f, double p, double i, double d, double iZone) {}
 }

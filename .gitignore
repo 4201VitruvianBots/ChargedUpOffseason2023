@@ -185,3 +185,4 @@ simgui.json
 .github/artifacts/memorylog.txt
 
 memorylog.txt
+/src/main/deploy/pathplanner/generatedCSV/

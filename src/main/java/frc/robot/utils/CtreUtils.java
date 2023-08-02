@@ -1,59 +1,60 @@
 package frc.robot.utils;
 
-import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
-import com.ctre.phoenix.motorcontrol.can.TalonFXConfiguration;
-import com.ctre.phoenix.sensors.AbsoluteSensorRange;
-import com.ctre.phoenix.sensors.CANCoderConfiguration;
-import com.ctre.phoenix.sensors.SensorInitializationStrategy;
-import com.ctre.phoenix.sensors.SensorTimeBase;
+import com.ctre.phoenix6.configs.Slot0Configs;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 
 public final class CtreUtils {
-  public static TalonFXConfiguration generateTurnMotorConfig() {
-    TalonFXConfiguration motorConfig = new TalonFXConfiguration();
+  public static class Devices {
+    public static class Falcon500 {
+      public static final int kSensorUnitsPerRotation = 2048;
+    }
 
-    motorConfig.slot0.kF = 0.0;
-    motorConfig.slot0.kP = 0.6; // 0.8;
-    motorConfig.slot0.kI = 0.0001;
-    motorConfig.slot0.integralZone = 121.904762;
-    motorConfig.slot0.kD = 12; // 0.0;
-    motorConfig.slot0.allowableClosedloopError = 0.0;
+    public static class CANCoder {
+      public static final int kSensorUnitsPerRotation = 4096;
+    }
+  }
 
-    motorConfig.supplyCurrLimit = new SupplyCurrentLimitConfiguration(true, 25, 40, 0.1);
+  public static Slot0Configs generateTurnMotorConfig() {
+    var motorConfig = new Slot0Configs();
 
-    motorConfig.initializationStrategy = SensorInitializationStrategy.BootToZero;
+    //    motorConfig.kF = 0.0;
+    motorConfig.kP = 0.6; // 0.8;
+    motorConfig.kI = 0.0001;
+    motorConfig.kD = 12; // 0.0;
+    //    motorConfig.allowableClosedloopError = 0.0;
+
+    //    motorConfig.supplyCurrLimit = new SupplyCurrentLimitConfiguration(true, 25, 40, 0.1);
 
     return motorConfig;
   }
 
-  public static TalonFXConfiguration generateDriveMotorConfig() {
-    TalonFXConfiguration motorConfig = new TalonFXConfiguration();
+  public static Slot0Configs generateDriveMotorConfig() {
+    var motorConfig = new Slot0Configs();
 
-    motorConfig.slot0.kF = 0.0;
-    motorConfig.slot0.kP = 0.1;
-    motorConfig.slot0.kI = 0.0;
-    motorConfig.slot0.kD = 0.0;
+    //    motorConfig.slot0.kF = 0.0;
+    motorConfig.kP = 0.1;
+    motorConfig.kI = 0.0;
+    motorConfig.kD = 0.0;
 
-    motorConfig.supplyCurrLimit = new SupplyCurrentLimitConfiguration(true, 35, 60, 0.1);
+    //    motorConfig.supplyCurrLimit = new SupplyCurrentLimitConfiguration(true, 35, 60, 0.1);
 
-    motorConfig.openloopRamp = 0.25;
-    motorConfig.closedloopRamp = 0.1;
+    //    motorConfig.openloopRamp = 0.25;
+    //    motorConfig.closedloopRamp = 0.1;
 
-    motorConfig.initializationStrategy = SensorInitializationStrategy.BootToZero;
     return motorConfig;
   }
 
-  public static CANCoderConfiguration generateCanCoderConfig() {
-    CANCoderConfiguration sensorConfig = new CANCoderConfiguration();
-
-    sensorConfig.absoluteSensorRange = AbsoluteSensorRange.Unsigned_0_to_360;
-    sensorConfig.initializationStrategy = SensorInitializationStrategy.BootToAbsolutePosition;
-    sensorConfig.sensorDirection = false;
-    sensorConfig.sensorTimeBase = SensorTimeBase.PerSecond;
-
-    return sensorConfig;
-  }
+  // TODO: Upgrade to Phoenix6
+  //  public static CANCoderConfiguration generateCanCoderConfig() {
+  //    CANCoderConfiguration sensorConfig = new CANCoderConfiguration();
+  //
+  //    sensorConfig.absoluteSensorRange = AbsoluteSensorRange.Unsigned_0_to_360;
+  //    sensorConfig.sensorDirection = false;
+  //    sensorConfig.sensorTimeBase = SensorTimeBase.PerSecond;
+  //
+  //    return sensorConfig;
+  //  }
 
   public static SwerveModuleState optimize(
       SwerveModuleState desiredState, Rotation2d currentAngle) {
