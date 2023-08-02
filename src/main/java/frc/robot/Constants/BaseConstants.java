@@ -8,7 +8,5 @@ package frc.robot.Constants;
  * constants are needed, to reduce verbosity.
  */
 public final class BaseConstants {
-  public static class OperatorConstants {
-    public static final int kDriverControllerPort = 0;
-  }
+
 }
