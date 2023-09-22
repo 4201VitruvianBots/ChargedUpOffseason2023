@@ -4,30 +4,51 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix6.hardware.TalonFX;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.constants.SWERVE;
+import frc.robot.utils.CtreUtils.Devices.CANCoder;
+import frc.robot.utils.SwerveUtils.SWERVE_MODULE_POSITION;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ctre.phoenixpro.hardware.TalonFX;
-
-import edu.wpi.first.wpilibj.CAN;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.utils.CtreUtils.Devices.CANCoder;
-import frc.robot.utils.SwerveUtils.SWERVE_MODULE_POSITION;
-
 /** Add your docs here. */
-public class SwerveDrive extends SubsystemBase implements AutoCloseable{
+public class SwerveDrive extends SubsystemBase implements AutoCloseable {
 
-    Private final HashMap<SWERVE_MODULE_POSITION, SwerveModule> m_swerveModules =
-        new HashMap<>(
-            Map.of(
-                SWERVE_MODULE_POSITION.FRONT_LEFT, 
-                new SwerveModule(
-                    SWERVE_MODULE_POSITION.FRONT_LEFT,
-                    new TalonFX(CAN.frontLeftTurnMotor),
-                    new TalonFX(CAN.frontLeftDriveMotor),
-                    new CANCoder(CAN.frontLeftCanCoder),
-                    SWERVE_DRIVE.frontLeftCANCoderOffset),
+  private final HashMap<SWERVE_MODULE_POSITION, SwerveModule> m_swerveModules =
+      new HashMap<>(
+          Map.of(
+              SWERVE_MODULE_POSITION.FRONT_LEFT,
+              new SwerveModule(
+                  SWERVE_MODULE_POSITION.FRONT_LEFT,
+                  new TalonFX(SWERVE.frontLeftTurnMotor),
+                  new TalonFX(SWERVE.frontLeftDriveMotor),
+                  new CANCoder(SWERVE.frontLeftCANCoderOffset),
+                  SWERVE.frontLeftCANCoderOffset),
+              SWERVE_MODULE_POSITION.FRONT_RIGHT,
+              new SwerveModule(
+                  SWERVE_MODULE_POSITION.FRONT_RIGHT,
+                  new TalonFX(SWERVE.frontRightTurnMotor),
+                  new TalonFX(SWERVE.frontRightDriveMotor),
+                  new CANCoder(SWERVE.frontRightCanCoder),
+                  SWERVE.frontLeftCANCoderOffset),
+              SWERVE_MODULE_POSITION.BACK_LEFT,
+              new SwerveModule(
+                  new TalonFX(SWERVE.backLeftTurnMotor),
+                  new TalonFX(SWERVE.backLeftDriveMotor),
+                  new CANCoder(SWERVE.backLeftCanCoder),
+                  SWERVE.backLeftCANCoderOffset),
+              SWERVE_MODULE_POSITION.BACK_RIGHT,
+              new SwerveModule(
+                  SWERVE_MODULE_POSITION.BACK_RIGHT,
+                  new TalonFX(SWERVE.backRightDriveMotor),
+                  new TalonFX(SWERVE.backRightDriveMotor),
+                  new CANCoder(SWERVE.backLeftCanCoder),
+                  SWERVE.backLeftCANCoderOffset)));
 
-                
-            ) );
+  @Override
+  public void close() throws Exception {
+    // TODO Auto-generated method stub
+
+  }
 }

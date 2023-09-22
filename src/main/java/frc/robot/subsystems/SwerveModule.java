@@ -4,5 +4,20 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix6.hardware.TalonFX;
+import frc.robot.utils.CtreUtils.Devices.CANCoder;
+import frc.robot.utils.SwerveUtils.SWERVE_MODULE_POSITION;
+
 /** Add your docs here. */
-public class SwerveModule {}
+public class SwerveModule {
+
+  public SwerveModule(
+      SWERVE_MODULE_POSITION backRight,
+      TalonFX talonFX,
+      TalonFX talonFX2,
+      CANCoder canCoder,
+      double backLeftCANCoderOffset) {}
+
+  public SwerveModule(
+      TalonFX talonFX, TalonFX talonFX2, CANCoder canCoder, double backLeftCANCoderOffset) {}
+}

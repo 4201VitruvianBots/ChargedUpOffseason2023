@@ -11,6 +11,8 @@ public final class CtreUtils {
     }
 
     public static class CANCoder {
+      public CANCoder(double frontLeftCANCoderOffset) {}
+
       public static final int kSensorUnitsPerRotation = 4096;
     }
   }
