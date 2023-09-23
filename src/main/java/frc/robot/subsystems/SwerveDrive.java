@@ -4,7 +4,13 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix6.StatusSignal;
+import com.ctre.phoenix6.hardware.Pigeon2;
 import com.ctre.phoenix6.hardware.TalonFX;
+
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.constants.SWERVE;
 import frc.robot.utils.CtreUtils.Devices.CANCoder;
@@ -46,9 +52,35 @@ public class SwerveDrive extends SubsystemBase implements AutoCloseable {
                   new CANCoder(SWERVE.backLeftCanCoder),
                   SWERVE.backLeftCANCoderOffset)));
 
+  private final Pigeon2 m_pigeon = new Pigeon2(SWERVE.pigeon, "rio");
+  
+                  private final PIDController m_xController =
+                  new PIDController(SWERVE.kP_X, SWERVE.kI_X, SWERVE.kD_X);
+              private final PIDController m_yController =
+                  new PIDController(SWERVE.kP_Y, SWERVE.kI_Y, SWERVE.kD_Y);
+              private final PIDController m_turnController =
+                  new PIDController(SWERVE.kP_Theta, SWERVE.kI_Theta, SWERVE.kD_Theta);
+
+                  public PIDController getXPidController() {
+    return m_xController;
+                  }
+               public PIDController getYPidController() {
+                    return m_yController;
+                  }
+                
+        public PIDController getThetaPidController() {
+            return m_turnController;
+                  }
+
+                 
+
+ 
+    
+  
   @Override
   public void close() throws Exception {
     // TODO Auto-generated method stub
 
   }
+
 }
